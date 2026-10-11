@@ -461,6 +461,17 @@ svg {
   font-size: 0.95rem;
 }
 
+.service-card .service-price {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+.service-card .service-price strong {
+  color: var(--brand-blue-light);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
 .service-card .text-link {
   margin-top: auto;
 }

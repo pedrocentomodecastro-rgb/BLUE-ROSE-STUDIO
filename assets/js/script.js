@@ -15,7 +15,6 @@ const CATEGORIAS = [
   'Barbearias',
   'Pet shops',
   'Minisites',
-  'Identidade visual',
 ];
 
 const PROJETOS = [
@@ -34,7 +33,7 @@ const PROJETOS = [
     imagens: [],
   },
   {
-    titulo: 'Social media para barbearia',
+    titulo: 'Posts para barbearia',
     categoria: 'Barbearias',
     descricao: 'Estudo de posts com tabela de serviços, horários de atendimento e chamadas para agendamento.',
     selo: 'Projeto conceitual',
@@ -51,13 +50,6 @@ const PROJETOS = [
     titulo: 'Minisite para negócio local',
     categoria: 'Minisites',
     descricao: 'Estudo de página única com apresentação, serviços, localização e botão de WhatsApp.',
-    selo: 'Projeto conceitual',
-    imagens: [],
-  },
-  {
-    titulo: 'Marca para pequeno negócio',
-    categoria: 'Identidade visual',
-    descricao: 'Estudo de identidade visual com logotipo, paleta de cores, tipografia e aplicações básicas.',
     selo: 'Projeto conceitual',
     imagens: [],
   },
