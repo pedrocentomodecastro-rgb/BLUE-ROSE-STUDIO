@@ -1,0 +1,11 @@
+# Endereços sem ".html": bluerose.art.br/bio abre o bio.html
+RewriteEngine On
+
+# /bio/ (com barra no final) vai para /bio, senão os caminhos de CSS e imagens quebram
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+# /bio serve o arquivo bio.html
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L]
