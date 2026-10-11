@@ -1,0 +1,230 @@
+/* Os contatos (WhatsApp, Instagram, TikTok, e-mail) ficam em assets/js/config.js */
+
+/* ==========================================================================
+   PORTFÓLIO — adicione, troque ou remova projetos nesta lista
+   --------------------------------------------------------------------------
+   titulo:    nome do projeto
+   categoria: use uma das categorias de CATEGORIAS (ou crie uma nova lá)
+   descricao: texto que aparece ao abrir o projeto
+   selo:      etiqueta do card (remova a linha para não mostrar)
+   imagens:   caminhos das imagens, ex.: ['./assets/images/portfolio/pizzaria-1.jpg']
+              A primeira vira a capa. Deixe [] para mostrar o espaço reservado.
+   ========================================================================== */
+const CATEGORIAS = [
+  'Restaurantes e pizzarias',
+  'Barbearias',
+  'Pet shops',
+  'Minisites',
+  'Identidade visual',
+];
+
+const PROJETOS = [
+  {
+    titulo: 'Posts para pizzaria',
+    categoria: 'Restaurantes e pizzarias',
+    descricao: 'Estudo de artes para feed e stories com promoções, sabores da semana e divulgação de delivery.',
+    selo: 'Projeto conceitual',
+    imagens: [],
+  },
+  {
+    titulo: 'Cardápio digital para restaurante',
+    categoria: 'Restaurantes e pizzarias',
+    descricao: 'Estudo de cardápio digital com categorias organizadas, pronto para compartilhar por link ou QR code.',
+    selo: 'Projeto conceitual',
+    imagens: [],
+  },
+  {
+    titulo: 'Social media para barbearia',
+    categoria: 'Barbearias',
+    descricao: 'Estudo de posts com tabela de serviços, horários de atendimento e chamadas para agendamento.',
+    selo: 'Projeto conceitual',
+    imagens: [],
+  },
+  {
+    titulo: 'Posts para pet shop',
+    categoria: 'Pet shops',
+    descricao: 'Estudo de artes para divulgar banho e tosa, produtos e campanhas sazonais.',
+    selo: 'Projeto conceitual',
+    imagens: [],
+  },
+  {
+    titulo: 'Minisite para negócio local',
+    categoria: 'Minisites',
+    descricao: 'Estudo de página única com apresentação, serviços, localização e botão de WhatsApp.',
+    selo: 'Projeto conceitual',
+    imagens: [],
+  },
+  {
+    titulo: 'Marca para pequeno negócio',
+    categoria: 'Identidade visual',
+    descricao: 'Estudo de identidade visual com logotipo, paleta de cores, tipografia e aplicações básicas.',
+    selo: 'Projeto conceitual',
+    imagens: [],
+  },
+];
+
+/* ==========================================================================
+   A partir daqui é o funcionamento do site — não precisa editar
+   ========================================================================== */
+
+const whatsappUrl = (mensagem) =>
+  `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(mensagem)}`;
+
+const abrirEmNovaAba = (link, url) => {
+  link.href = url;
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+};
+
+const aplicarWhatsapp = (raiz = document) => {
+  raiz.querySelectorAll('[data-whatsapp]').forEach((link) => {
+    abrirEmNovaAba(link, whatsappUrl(link.dataset.whatsapp));
+  });
+};
+
+aplicarWhatsapp();
+
+const linksSociais = {
+  instagram: `https://www.instagram.com/${CONFIG.instagram}/`,
+  tiktok: `https://www.tiktok.com/@${CONFIG.tiktok}`,
+};
+
+document.querySelectorAll('[data-link]').forEach((link) => {
+  const tipo = link.dataset.link;
+  if (tipo === 'email') {
+    link.href = `mailto:${CONFIG.email}`;
+  } else if (linksSociais[tipo]) {
+    abrirEmNovaAba(link, linksSociais[tipo]);
+  }
+});
+
+/* ----- Portfólio ----- */
+
+const filtros = document.getElementById('portfolio-filtros');
+const grade = document.getElementById('portfolio-grade');
+const dialogo = document.getElementById('projeto-dialogo');
+const TODOS = 'Todos';
+let categoriaAtiva = TODOS;
+
+const criar = (tag, classe, texto) => {
+  const elemento = document.createElement(tag);
+  if (classe) elemento.className = classe;
+  if (texto) elemento.textContent = texto;
+  return elemento;
+};
+
+const criarMidia = (projeto, indice = 0) => {
+  const caminho = projeto.imagens && projeto.imagens[indice];
+  if (caminho) {
+    const imagem = criar('img');
+    imagem.src = caminho;
+    imagem.alt = `${projeto.titulo} (${projeto.categoria})`;
+    imagem.loading = 'lazy';
+    return imagem;
+  }
+  const reserva = criar('div', 'placeholder');
+  reserva.append(criar('span', 'placeholder-label', projeto.categoria));
+  return reserva;
+};
+
+const abrirProjeto = (projeto) => {
+  const midia = document.getElementById('projeto-midia');
+  midia.replaceChildren();
+  const total = Math.max(1, (projeto.imagens || []).length);
+  for (let i = 0; i < total; i += 1) midia.append(criarMidia(projeto, i));
+
+  document.getElementById('projeto-categoria').textContent = projeto.selo
+    ? `${projeto.categoria} · ${projeto.selo}`
+    : projeto.categoria;
+  document.getElementById('projeto-titulo').textContent = projeto.titulo;
+  document.getElementById('projeto-descricao').textContent = projeto.descricao;
+  abrirEmNovaAba(
+    document.getElementById('projeto-cta'),
+    whatsappUrl(`Olá! Vi o projeto "${projeto.titulo}" no site e quero algo parecido para o meu negócio.`)
+  );
+
+  if (typeof dialogo.showModal === 'function') {
+    dialogo.showModal();
+  } else {
+    dialogo.setAttribute('open', '');
+  }
+};
+
+const desenharProjetos = () => {
+  const visiveis = PROJETOS.filter(
+    (projeto) => categoriaAtiva === TODOS || projeto.categoria === categoriaAtiva
+  );
+
+  grade.replaceChildren(
+    ...visiveis.map((projeto) => {
+      const card = criar('button', 'project-card');
+      card.type = 'button';
+      card.setAttribute('aria-haspopup', 'dialog');
+
+      const capa = criar('span', 'project-thumb');
+      capa.append(criarMidia(projeto));
+      if (projeto.selo) capa.append(criar('span', 'project-badge', projeto.selo));
+
+      const info = criar('span', 'project-info');
+      info.append(
+        criar('span', 'project-category', projeto.categoria),
+        criar('span', 'project-title', projeto.titulo)
+      );
+
+      card.append(capa, info);
+      card.addEventListener('click', () => abrirProjeto(projeto));
+      return card;
+    })
+  );
+
+  if (!visiveis.length) {
+    grade.append(criar('p', 'fine-print', 'Em breve, projetos nesta categoria.'));
+  }
+};
+
+const desenharFiltros = () => {
+  filtros.replaceChildren(
+    ...[TODOS, ...CATEGORIAS].map((categoria) => {
+      const botao = criar('button', 'filter-chip', categoria);
+      botao.type = 'button';
+      botao.setAttribute('aria-pressed', String(categoria === categoriaAtiva));
+      botao.addEventListener('click', () => {
+        categoriaAtiva = categoria;
+        desenharFiltros();
+        desenharProjetos();
+      });
+      return botao;
+    })
+  );
+};
+
+if (filtros && grade && dialogo) {
+  desenharFiltros();
+  desenharProjetos();
+
+  document.getElementById('projeto-fechar').addEventListener('click', () => dialogo.close());
+  dialogo.addEventListener('click', (evento) => {
+    if (evento.target === dialogo) dialogo.close();
+  });
+}
+
+/* ----- Animações leves de entrada ----- */
+
+const itensAnimados = document.querySelectorAll('.reveal');
+
+if ('IntersectionObserver' in window) {
+  const observador = new IntersectionObserver(
+    (entradas) => {
+      entradas.forEach((entrada) => {
+        if (entrada.isIntersecting) {
+          entrada.target.classList.add('is-visible');
+          observador.unobserve(entrada.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: '0px 0px -6% 0px' }
+  );
+  itensAnimados.forEach((item) => observador.observe(item));
+} else {
+  itensAnimados.forEach((item) => item.classList.add('is-visible'));
+}
