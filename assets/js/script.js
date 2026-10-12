@@ -41,17 +41,17 @@ const PROJETOS = [
   {
     titulo: 'Cardápio digital para restaurante',
     categoria: 'Restaurantes e pizzarias',
-    descricao: 'Cardápio digital de 6 páginas para restaurante, com capa, menu da casa, combos, destaques, bebidas e sobremesas.',
+    descricao: 'Cardápio digital de 6 páginas para restaurante, com capa, menu da casa, combos, ofertas, pratos e promoções.',
     selo: 'Projeto conceitual',
-    formato: '3 / 4',
+    formato: '2 / 3',
     unidade: 'páginas',
     imagens: [
-      './assets/images/portfolio/cardapio-1-capa.jpg',
-      './assets/images/portfolio/cardapio-2-menu.jpg',
-      './assets/images/portfolio/cardapio-3-combos.jpg',
-      './assets/images/portfolio/cardapio-4-destaques.jpg',
-      './assets/images/portfolio/cardapio-5-bebidas.jpg',
-      './assets/images/portfolio/cardapio-6-favorito.jpg',
+      './assets/images/portfolio/cardapio-depois-1-capa.jpg',
+      './assets/images/portfolio/cardapio-depois-2-menu.jpg',
+      './assets/images/portfolio/cardapio-depois-3-combos.jpg',
+      './assets/images/portfolio/cardapio-depois-4-ofertas.jpg',
+      './assets/images/portfolio/cardapio-depois-5-pratos.jpg',
+      './assets/images/portfolio/cardapio-depois-6-promocoes.jpg',
     ],
   },
   {
@@ -81,7 +81,7 @@ const PROJETOS = [
    ANTES E DEPOIS — grupos de imagens comparados na seção "Antes e depois"
    --------------------------------------------------------------------------
    grupo:   nome da aba (um trabalho por grupo)
-   formato: proporção do quadro. '3 / 4' para páginas em pé, '1' para posts
+   formato: proporção do quadro. '2 / 3' ou '3 / 4' para páginas em pé, '1' para posts
    pares:   nome   = texto do botão que escolhe o par
             antes  = imagem do material antigo do cliente
             depois = imagem do material refeito
@@ -89,14 +89,13 @@ const PROJETOS = [
 const COMPARACOES = [
   {
     grupo: 'Cardápio digital',
-    formato: '3 / 4',
+    formato: '2 / 3',
     pares: [
-      { nome: 'Capa', antes: 'cardapio-antes-1-capa.jpg', depois: 'cardapio-1-capa.jpg' },
-      { nome: 'Menu', antes: 'cardapio-antes-2-menu.jpg', depois: 'cardapio-2-menu.jpg' },
-      { nome: 'Combos', antes: 'cardapio-antes-3-combos.jpg', depois: 'cardapio-3-combos.jpg' },
-      { nome: 'Destaques', antes: 'cardapio-antes-4-destaques.jpg', depois: 'cardapio-4-destaques.jpg' },
-      { nome: 'Bebidas', antes: 'cardapio-antes-5-bebidas.jpg', depois: 'cardapio-5-bebidas.jpg' },
-      { nome: 'Favoritos', antes: 'cardapio-antes-6-favorito.jpg', depois: 'cardapio-6-favorito.jpg' },
+      { nome: 'Capa', antes: 'cardapio-antigo-1-capa.jpg', depois: 'cardapio-depois-1-capa.jpg' },
+      { nome: 'Menu', antes: 'cardapio-antigo-2-menu.jpg', depois: 'cardapio-depois-2-menu.jpg' },
+      { nome: 'Combos', antes: 'cardapio-antigo-3-combos.jpg', depois: 'cardapio-depois-3-combos.jpg' },
+      { nome: 'Destaques', antes: 'cardapio-antigo-4-destaques.jpg', depois: 'cardapio-depois-4-ofertas.jpg' },
+      { nome: 'Pratos', antes: 'cardapio-antigo-6-favorito.jpg', depois: 'cardapio-depois-5-pratos.jpg' },
     ],
   },
   {
