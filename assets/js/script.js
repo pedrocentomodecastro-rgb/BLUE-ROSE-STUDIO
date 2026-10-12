@@ -24,15 +24,15 @@ const PROJETOS = [
     descricao: 'Pacote de 9 artes para o feed de uma pizzaria, com promoções, oferta 2 por 1 e divulgação de delivery.',
     selo: 'Projeto conceitual',
     imagens: [
-      './assets/images/portfolio/pizzaria-5.jpg',
       './assets/images/portfolio/pizzaria-3.jpg',
-      './assets/images/portfolio/pizzaria-2.jpg',
-      './assets/images/portfolio/pizzaria-1.jpg',
-      './assets/images/portfolio/pizzaria-8.jpg',
       './assets/images/portfolio/pizzaria-7.jpg',
+      './assets/images/portfolio/pizzaria-1.jpg',
       './assets/images/portfolio/pizzaria-9.jpg',
-      './assets/images/portfolio/pizzaria-6.jpg',
+      './assets/images/portfolio/pizzaria-8.jpg',
+      './assets/images/portfolio/pizzaria-2.jpg',
+      './assets/images/portfolio/pizzaria-5.jpg',
       './assets/images/portfolio/pizzaria-4.jpg',
+      './assets/images/portfolio/pizzaria-6.jpg',
     ],
   },
   {
@@ -142,6 +142,7 @@ const abrirProjeto = (projeto) => {
       const link = criar('a');
       abrirEmNovaAba(link, imagens[i]);
       link.setAttribute('aria-label', `Abrir imagem ${i + 1} de ${total} em tamanho maior`);
+      link.style.setProperty('--ordem', i);
       link.append(item);
       midia.append(link);
     } else {
@@ -166,7 +167,38 @@ const abrirProjeto = (projeto) => {
   }
 };
 
+/* Capa animada: projetos com várias imagens alternam entre elas no card. */
+const INTERVALO_CAPA = 2800;
+const semMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let carrosseis = [];
+
+const iniciarCarrossel = (capa, projeto) => {
+  const camadas = [capa.querySelector('img'), criar('img')];
+  camadas[0].classList.add('is-active');
+  camadas[1].alt = '';
+  capa.classList.add('is-carousel');
+  capa.append(camadas[1]);
+
+  let indice = 0;
+  let ativa = 0;
+  carrosseis.push(
+    setInterval(() => {
+      indice = (indice + 1) % projeto.imagens.length;
+      const proxima = camadas[1 - ativa];
+      proxima.onload = () => {
+        proxima.classList.add('is-active');
+        camadas[ativa].classList.remove('is-active');
+        ativa = 1 - ativa;
+      };
+      proxima.src = projeto.imagens[indice];
+    }, INTERVALO_CAPA)
+  );
+};
+
 const desenharProjetos = () => {
+  carrosseis.forEach(clearInterval);
+  carrosseis = [];
+
   const visiveis = PROJETOS.filter(
     (projeto) => categoriaAtiva === TODOS || projeto.categoria === categoriaAtiva
   );
@@ -179,6 +211,9 @@ const desenharProjetos = () => {
 
       const capa = criar('span', 'project-thumb');
       capa.append(criarMidia(projeto));
+      if (projeto.imagens && projeto.imagens.length > 1 && !semMovimento) {
+        iniciarCarrossel(capa, projeto);
+      }
       if (projeto.selo) capa.append(criar('span', 'project-badge', projeto.selo));
 
       const info = criar('span', 'project-info');

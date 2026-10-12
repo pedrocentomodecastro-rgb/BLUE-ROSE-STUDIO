@@ -677,8 +677,22 @@ svg {
 .project-thumb {
   display: block;
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1;
   overflow: hidden;
+}
+
+/* Capa que alterna entre as imagens do projeto */
+.project-thumb.is-carousel img {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity 0.9s var(--ease), transform 3.2s linear;
+}
+
+.project-thumb.is-carousel img.is-active {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .project-thumb img,
@@ -719,8 +733,9 @@ svg {
 
 .project-badge {
   position: absolute;
-  top: 0.75rem;
+  bottom: 0.75rem;
   left: 0.75rem;
+  z-index: 1;
   padding: 0.3rem 0.65rem;
   border: 1px solid var(--line-strong);
   border-radius: 2rem;
@@ -782,6 +797,24 @@ svg {
 .dialog-media.is-gallery a {
   display: block;
   aspect-ratio: 1;
+  overflow: hidden;
+  animation: galeria-entrada 0.55s var(--ease) both;
+  animation-delay: calc(var(--ordem, 0) * 80ms);
+}
+
+.dialog-media.is-gallery img {
+  transition: transform 0.5s var(--ease);
+}
+
+.dialog-media.is-gallery a:hover img {
+  transform: scale(1.07);
+}
+
+@keyframes galeria-entrada {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.92);
+  }
 }
 
 .dialog-media .placeholder {
@@ -1070,5 +1103,9 @@ svg {
   .js .reveal {
     opacity: 1;
     transform: none;
+  }
+
+  .dialog-media.is-gallery a {
+    animation: none;
   }
 }
