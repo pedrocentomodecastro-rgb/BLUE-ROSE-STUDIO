@@ -687,7 +687,7 @@ svg {
   inset: 0;
   opacity: 0;
   transform: scale(1.06);
-  transition: opacity 0.9s var(--ease), transform 3.2s linear;
+  transition: opacity 0.6s var(--ease), transform 2.2s linear;
 }
 
 .project-thumb.is-carousel img.is-active {
@@ -745,6 +745,41 @@ svg {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+/* Aviso de que o card abre a galeria completa */
+.project-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 1;
+  padding: 0.35rem 0.7rem;
+  border-radius: 2rem;
+  background: var(--brand-blue);
+  color: var(--brand-white);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  box-shadow: 0 0 0 0 rgba(30, 91, 255, 0.55);
+  animation: aviso-pulso 2.2s ease-out infinite;
+}
+
+.project-more span {
+  transition: transform 0.25s var(--ease);
+}
+
+.project-card:hover .project-more span {
+  transform: translateX(3px);
+}
+
+@keyframes aviso-pulso {
+  70%,
+  100% {
+    box-shadow: 0 0 0 0.6rem rgba(30, 91, 255, 0);
+  }
 }
 
 .project-info {
@@ -1105,7 +1140,8 @@ svg {
     transform: none;
   }
 
-  .dialog-media.is-gallery a {
+  .dialog-media.is-gallery a,
+  .project-more {
     animation: none;
   }
 }

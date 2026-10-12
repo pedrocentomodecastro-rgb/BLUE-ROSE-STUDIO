@@ -168,7 +168,7 @@ const abrirProjeto = (projeto) => {
 };
 
 /* Capa animada: projetos com várias imagens alternam entre elas no card. */
-const INTERVALO_CAPA = 2800;
+const INTERVALO_CAPA = 1800;
 const semMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 let carrosseis = [];
 
@@ -215,6 +215,13 @@ const desenharProjetos = () => {
         iniciarCarrossel(capa, projeto);
       }
       if (projeto.selo) capa.append(criar('span', 'project-badge', projeto.selo));
+      if (projeto.imagens && projeto.imagens.length > 1) {
+        const aviso = criar('span', 'project-more', `Ver as ${projeto.imagens.length} artes `);
+        const seta = criar('span', '', '→');
+        seta.setAttribute('aria-hidden', 'true');
+        aviso.append(seta);
+        capa.append(aviso);
+      }
 
       const info = criar('span', 'project-info');
       info.append(
