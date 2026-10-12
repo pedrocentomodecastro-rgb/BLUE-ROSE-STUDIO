@@ -117,6 +117,21 @@ const COMPARACOES = [
       { nome: 'Post 3', antes: 'pizzaria-antes-3-precos.jpg', depois: 'pizzaria-7.jpg' },
     ],
   },
+  {
+    grupo: 'Posts para barbearia',
+    formato: '1',
+    pares: [
+      { nome: 'Estilo', antes: 'barbearia-antes-1-estilo.jpg', depois: 'barbearia-1-estilo.jpg' },
+      { nome: 'Barba', antes: 'barbearia-antes-2-barba.jpg', depois: 'barbearia-2-barba.jpg' },
+      { nome: 'Corte grátis', antes: 'barbearia-antes-3-corte-gratis.jpg', depois: 'barbearia-3-corte-gratis.jpg' },
+      { nome: '2x1', antes: 'barbearia-antes-4-2x1.jpg', depois: 'barbearia-4-2x1.jpg' },
+      { nome: 'Cortes e barbas', antes: 'barbearia-antes-5-cortes-barbas.jpg', depois: 'barbearia-5-cortes-barbas.jpg' },
+      { nome: 'Satisfação', antes: 'barbearia-antes-6-satisfacao.jpg', depois: 'barbearia-6-satisfacao.jpg' },
+      { nome: 'Apare', antes: 'barbearia-antes-7-apare.jpg', depois: 'barbearia-7-apare.jpg' },
+      { nome: 'Fim de semana', antes: 'barbearia-antes-8-fim-de-semana.jpg', depois: 'barbearia-8-fim-de-semana.jpg' },
+      { nome: 'Recibo', antes: 'barbearia-antes-9-recibo.jpg', depois: 'barbearia-9-recibo.jpg' },
+    ],
+  },
 ];
 const PASTA_COMPARACOES = './assets/images/portfolio/';
 
