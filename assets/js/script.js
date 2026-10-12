@@ -57,9 +57,19 @@ const PROJETOS = [
   {
     titulo: 'Posts para barbearia',
     categoria: 'Barbearias',
-    descricao: 'Estudo de posts com tabela de serviços, horários de atendimento e chamadas para agendamento.',
+    descricao: 'Pacote de 8 posts e um recibo para barbearia, com promoções, horários de atendimento e identidade visual clássica.',
     selo: 'Projeto conceitual',
-    imagens: [],
+    imagens: [
+      './assets/images/portfolio/barbearia-1-estilo.jpg',
+      './assets/images/portfolio/barbearia-2-barba.jpg',
+      './assets/images/portfolio/barbearia-3-corte-gratis.jpg',
+      './assets/images/portfolio/barbearia-4-2x1.jpg',
+      './assets/images/portfolio/barbearia-5-cortes-barbas.jpg',
+      './assets/images/portfolio/barbearia-6-satisfacao.jpg',
+      './assets/images/portfolio/barbearia-7-apare.jpg',
+      './assets/images/portfolio/barbearia-8-fim-de-semana.jpg',
+      './assets/images/portfolio/barbearia-9-recibo.jpg',
+    ],
   },
   {
     titulo: 'Posts para pet shop',
