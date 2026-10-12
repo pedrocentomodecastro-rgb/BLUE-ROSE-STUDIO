@@ -103,7 +103,8 @@ const PROJETOS = [
    ANTES E DEPOIS — grupos de imagens comparados na seção "Antes e depois"
    --------------------------------------------------------------------------
    grupo:   nome da aba (um trabalho por grupo)
-   formato: proporção do quadro. '2 / 3' ou '3 / 4' para páginas em pé, '1' para posts
+   formato: proporção do quadro. '2 / 3' ou '3 / 4' para páginas em pé, '1' para posts,
+            '9 / 16' para stories
    pares:   nome   = texto do botão que escolhe o par
             antes  = imagem do material antigo do cliente
             depois = imagem do material refeito
@@ -142,6 +143,21 @@ const COMPARACOES = [
       { nome: 'Apare', antes: 'barbearia-antes-7-apare.jpg', depois: 'barbearia-7-apare.jpg' },
       { nome: 'Fim de semana', antes: 'barbearia-antes-8-fim-de-semana.jpg', depois: 'barbearia-8-fim-de-semana.jpg' },
       { nome: 'Recibo', antes: 'barbearia-antes-9-recibo.jpg', depois: 'barbearia-9-recibo.jpg' },
+    ],
+  },
+  {
+    grupo: 'Stories para pet shop',
+    formato: '9 / 16',
+    pares: [
+      { nome: 'Pet shop', antes: 'petshop-antes-1-pet-shop.jpg', depois: 'petshop-1-pet-shop.jpg' },
+      { nome: 'Seu amigo', antes: 'petshop-antes-2-cuidado-amigo.jpg', depois: 'petshop-2-cuidado-amigo.jpg' },
+      { nome: 'Adoção', antes: 'petshop-antes-3-adote.jpg', depois: 'petshop-3-adote.jpg' },
+      { nome: 'Coleira', antes: 'petshop-antes-4-racoes-coleira.jpg', depois: 'petshop-4-racoes-coleira.jpg' },
+      { nome: 'Gato', antes: 'petshop-antes-5-melhor-cuidado.jpg', depois: 'petshop-5-melhor-cuidado.jpg' },
+      { nome: 'Acessórios', antes: 'petshop-antes-6-racoes-acessorios.jpg', depois: 'petshop-6-racoes-acessorios.jpg' },
+      { nome: 'Rações', antes: 'petshop-antes-7-mimo-pet.jpg', depois: 'petshop-7-mimo-pet.jpg' },
+      { nome: 'Desconto', antes: 'petshop-antes-8-desconto.jpg', depois: 'petshop-8-desconto.jpg' },
+      { nome: 'Petiscos', antes: 'petshop-antes-9-melhor-racao.jpg', depois: 'petshop-9-melhor-racao.jpg' },
     ],
   },
 ];

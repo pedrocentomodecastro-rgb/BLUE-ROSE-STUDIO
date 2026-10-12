@@ -836,17 +836,19 @@ svg {
 /* Abas que escolhem o trabalho comparado */
 .compare-tabs {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 0.25rem;
   margin-bottom: 1rem;
   padding: 0.25rem;
   border: 1px solid var(--line);
-  border-radius: 2rem;
+  border-radius: 1.75rem;
   background: var(--surface);
 }
 
+/* Duas abas por linha, para os nomes caberem no celular */
 .compare-tab {
-  flex: 1;
+  flex: 1 1 calc(50% - 0.25rem);
   min-height: 2.75rem;
   padding: 0.5rem 0.75rem;
   border: 0;
