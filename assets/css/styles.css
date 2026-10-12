@@ -807,6 +807,124 @@ svg {
   line-height: 1.25;
 }
 
+/* ----- Antes e depois ----- */
+
+.compare {
+  display: grid;
+  gap: 2rem;
+}
+
+.compare-text {
+  display: grid;
+  gap: 1.1rem;
+  justify-items: start;
+}
+
+.compare-text p:not(.eyebrow):not(.fine-print) {
+  color: var(--text-soft);
+}
+
+.compare-stage .filter-bar {
+  margin-bottom: 1rem;
+}
+
+.compare-frame {
+  --pos: 50%;
+  position: relative;
+  width: min(100%, 26rem);
+  margin-inline: auto;
+  aspect-ratio: 3 / 4;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-card);
+  background: var(--brand-navy);
+  overflow: hidden;
+  user-select: none;
+}
+
+.compare-frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* O "antes" fica por cima e é cortado na posição da linha */
+.compare-before {
+  clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+}
+
+.compare-tag {
+  position: absolute;
+  top: 0.75rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 2rem;
+  background: rgba(5, 6, 11, 0.78);
+  color: var(--brand-white);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.compare-tag-before {
+  left: 0.75rem;
+}
+
+.compare-tag-after {
+  right: 0.75rem;
+  background: var(--brand-blue);
+}
+
+.compare-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--pos);
+  width: 2px;
+  background: var(--brand-white);
+  box-shadow: 0 0 0.75rem rgba(5, 6, 11, 0.6);
+  pointer-events: none;
+}
+
+.compare-handle svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  width: 2.75rem;
+  max-width: none;
+  height: 2.75rem;
+  padding: 0.7rem;
+  border-radius: 50%;
+  background: var(--brand-blue);
+  fill: none;
+  stroke: var(--brand-white);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  box-shadow: 0 0.25rem 1rem rgba(5, 6, 11, 0.55);
+}
+
+/* Controle invisível por cima de tudo: é ele que recebe o arrastar e o teclado */
+.compare-range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
+  touch-action: pan-y;
+}
+
+.compare-frame:has(.compare-range:focus-visible) {
+  outline: 2px solid var(--brand-blue-light);
+  outline-offset: 3px;
+}
+
 /* ----- Janela do projeto ----- */
 
 .project-dialog {
@@ -1107,6 +1225,19 @@ svg {
 @media (min-width: 900px) {
   .header-nav {
     display: flex;
+  }
+
+  .compare {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 3.5rem;
+  }
+
+  .compare-stage .filter-bar {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-inline: 0;
+    padding-inline: 0;
   }
 
   .about {

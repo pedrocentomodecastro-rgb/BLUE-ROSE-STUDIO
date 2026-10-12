@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/css/styles.css?v=8">
+  <link rel="stylesheet" href="./assets/css/styles.css?v=9">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -231,6 +231,34 @@
       </div>
     </section>
 
+    <!-- ===== ANTES E DEPOIS =====
+         As páginas comparadas ficam na lista COMPARACOES, em assets/js/script.js. -->
+    <section class="section" id="antes-depois">
+      <div class="container compare">
+        <div class="compare-text reveal">
+          <p class="eyebrow">Antes e depois</p>
+          <h2>Do cardápio simples ao cardápio que <em>dá vontade de pedir.</em></h2>
+          <p>Você envia o cardápio que já usa e nós redesenhamos com fotos, cores e organização que valorizam seus produtos. Arraste a linha para comparar.</p>
+          <p class="fine-print">Projeto conceitual, criado para demonstrar o serviço.</p>
+          <a class="btn btn-primary" href="#contato" data-whatsapp="Olá! Vi o antes e depois do cardápio no site e quero melhorar o cardápio do meu negócio.">Quero melhorar meu cardápio</a>
+        </div>
+
+        <div class="compare-stage reveal">
+          <div class="filter-bar" id="comparar-paginas" role="group" aria-label="Escolher a página do cardápio"></div>
+          <div class="compare-frame" id="comparar">
+            <img class="compare-after" id="comparar-depois" alt="" loading="lazy" width="1080" height="1440">
+            <img class="compare-before" id="comparar-antes" alt="" loading="lazy" width="1080" height="1440">
+            <span class="compare-tag compare-tag-before">Antes</span>
+            <span class="compare-tag compare-tag-after">Depois</span>
+            <span class="compare-handle" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg>
+            </span>
+            <input class="compare-range" id="comparar-controle" type="range" min="0" max="100" value="50" aria-label="Arraste para comparar o cardápio antes e depois">
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== COMO FUNCIONA ===== -->
     <section class="section section-tinted" id="como-funciona">
       <div class="container">
@@ -323,8 +351,8 @@
     </div>
   </dialog>
 
-  <script src="./assets/js/config.js?v=8"></script>
-  <script src="./assets/js/links.js?v=8"></script>
-  <script src="./assets/js/script.js?v=8"></script>
+  <script src="./assets/js/config.js?v=9"></script>
+  <script src="./assets/js/links.js?v=9"></script>
+  <script src="./assets/js/script.js?v=9"></script>
 </body>
 </html>

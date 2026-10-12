@@ -78,6 +78,23 @@ const PROJETOS = [
 ];
 
 /* ==========================================================================
+   ANTES E DEPOIS — pares de imagens comparados na seção "Antes e depois"
+   --------------------------------------------------------------------------
+   nome:   texto do botão que escolhe o par
+   antes:  imagem do material antigo do cliente
+   depois: imagem do material refeito
+   ========================================================================== */
+const COMPARACOES = [
+  { nome: 'Capa', antes: 'cardapio-antes-1-capa.jpg', depois: 'cardapio-1-capa.jpg' },
+  { nome: 'Menu', antes: 'cardapio-antes-2-menu.jpg', depois: 'cardapio-2-menu.jpg' },
+  { nome: 'Combos', antes: 'cardapio-antes-3-combos.jpg', depois: 'cardapio-3-combos.jpg' },
+  { nome: 'Destaques', antes: 'cardapio-antes-4-destaques.jpg', depois: 'cardapio-4-destaques.jpg' },
+  { nome: 'Bebidas', antes: 'cardapio-antes-5-bebidas.jpg', depois: 'cardapio-5-bebidas.jpg' },
+  { nome: 'Favoritos', antes: 'cardapio-antes-6-favorito.jpg', depois: 'cardapio-6-favorito.jpg' },
+];
+const PASTA_COMPARACOES = './assets/images/portfolio/';
+
+/* ==========================================================================
    A partir daqui é o funcionamento do site — não precisa editar
    ========================================================================== */
 
@@ -293,6 +310,71 @@ if (filtros && grade && dialogo) {
   dialogo.addEventListener('click', (evento) => {
     if (evento.target === dialogo) dialogo.close();
   });
+}
+
+/* ----- Antes e depois ----- */
+
+const comparar = document.getElementById('comparar');
+
+if (comparar && COMPARACOES.length) {
+  const controle = document.getElementById('comparar-controle');
+  const paginas = document.getElementById('comparar-paginas');
+  const imagemAntes = document.getElementById('comparar-antes');
+  const imagemDepois = document.getElementById('comparar-depois');
+  let parAtivo = 0;
+
+  const posicionar = (valor) => {
+    controle.value = valor;
+    comparar.style.setProperty('--pos', `${valor}%`);
+  };
+
+  const mostrarPar = (indice) => {
+    parAtivo = indice;
+    const par = COMPARACOES[indice];
+    imagemAntes.src = PASTA_COMPARACOES + par.antes;
+    imagemAntes.alt = `Cardápio antes: ${par.nome}`;
+    imagemDepois.src = PASTA_COMPARACOES + par.depois;
+    imagemDepois.alt = `Cardápio depois: ${par.nome}`;
+    posicionar(50);
+
+    paginas.replaceChildren(
+      ...COMPARACOES.map((item, i) => {
+        const botao = criar('button', 'filter-chip', item.nome);
+        botao.type = 'button';
+        botao.setAttribute('aria-pressed', String(i === parAtivo));
+        botao.addEventListener('click', () => mostrarPar(i));
+        return botao;
+      })
+    );
+  };
+
+  controle.addEventListener('input', () => posicionar(controle.value));
+  mostrarPar(0);
+
+  // Ao aparecer na tela, a linha vai e volta uma vez para mostrar que dá para arrastar.
+  if ('IntersectionObserver' in window && !semMovimento) {
+    const demonstrar = () => {
+      const inicio = performance.now();
+      const DURACAO = 1800;
+      const passo = (agora) => {
+        const progresso = Math.min(1, (agora - inicio) / DURACAO);
+        posicionar(50 + Math.sin(progresso * Math.PI * 2) * 28);
+        if (progresso < 1) requestAnimationFrame(passo);
+      };
+      requestAnimationFrame(passo);
+    };
+
+    const vigia = new IntersectionObserver(
+      (entradas) => {
+        if (entradas[0].isIntersecting) {
+          vigia.disconnect();
+          demonstrar();
+        }
+      },
+      { threshold: 0.6 }
+    );
+    vigia.observe(comparar);
+  }
 }
 
 /* ----- Animações leves de entrada ----- */
