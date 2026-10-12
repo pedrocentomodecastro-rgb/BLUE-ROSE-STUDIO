@@ -833,12 +833,48 @@ svg {
   margin-bottom: 1rem;
 }
 
+/* Abas que escolhem o trabalho comparado */
+.compare-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+  padding: 0.25rem;
+  border: 1px solid var(--line);
+  border-radius: 2rem;
+  background: var(--surface);
+}
+
+.compare-tab {
+  flex: 1;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  border: 0;
+  border-radius: 2rem;
+  background: none;
+  color: var(--text-soft);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.25s, color 0.25s;
+}
+
+.compare-tab:hover {
+  color: var(--brand-white);
+}
+
+.compare-tab[aria-pressed="true"] {
+  background: var(--brand-blue);
+  color: var(--brand-white);
+}
+
 .compare-frame {
   --pos: 50%;
   position: relative;
   width: min(100%, 26rem);
   margin-inline: auto;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: var(--formato, 3 / 4);
   border: 1px solid var(--line-strong);
   border-radius: var(--radius-card);
   background: var(--brand-navy);
@@ -856,6 +892,7 @@ svg {
 
 /* O "antes" fica por cima e é cortado na posição da linha */
 .compare-before {
+  object-position: top;
   clip-path: inset(0 calc(100% - var(--pos)) 0 0);
 }
 

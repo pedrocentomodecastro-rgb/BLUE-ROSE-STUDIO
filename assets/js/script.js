@@ -78,19 +78,36 @@ const PROJETOS = [
 ];
 
 /* ==========================================================================
-   ANTES E DEPOIS — pares de imagens comparados na seção "Antes e depois"
+   ANTES E DEPOIS — grupos de imagens comparados na seção "Antes e depois"
    --------------------------------------------------------------------------
-   nome:   texto do botão que escolhe o par
-   antes:  imagem do material antigo do cliente
-   depois: imagem do material refeito
+   grupo:   nome da aba (um trabalho por grupo)
+   formato: proporção do quadro. '3 / 4' para páginas em pé, '1' para posts
+   pares:   nome   = texto do botão que escolhe o par
+            antes  = imagem do material antigo do cliente
+            depois = imagem do material refeito
    ========================================================================== */
 const COMPARACOES = [
-  { nome: 'Capa', antes: 'cardapio-antes-1-capa.jpg', depois: 'cardapio-1-capa.jpg' },
-  { nome: 'Menu', antes: 'cardapio-antes-2-menu.jpg', depois: 'cardapio-2-menu.jpg' },
-  { nome: 'Combos', antes: 'cardapio-antes-3-combos.jpg', depois: 'cardapio-3-combos.jpg' },
-  { nome: 'Destaques', antes: 'cardapio-antes-4-destaques.jpg', depois: 'cardapio-4-destaques.jpg' },
-  { nome: 'Bebidas', antes: 'cardapio-antes-5-bebidas.jpg', depois: 'cardapio-5-bebidas.jpg' },
-  { nome: 'Favoritos', antes: 'cardapio-antes-6-favorito.jpg', depois: 'cardapio-6-favorito.jpg' },
+  {
+    grupo: 'Cardápio digital',
+    formato: '3 / 4',
+    pares: [
+      { nome: 'Capa', antes: 'cardapio-antes-1-capa.jpg', depois: 'cardapio-1-capa.jpg' },
+      { nome: 'Menu', antes: 'cardapio-antes-2-menu.jpg', depois: 'cardapio-2-menu.jpg' },
+      { nome: 'Combos', antes: 'cardapio-antes-3-combos.jpg', depois: 'cardapio-3-combos.jpg' },
+      { nome: 'Destaques', antes: 'cardapio-antes-4-destaques.jpg', depois: 'cardapio-4-destaques.jpg' },
+      { nome: 'Bebidas', antes: 'cardapio-antes-5-bebidas.jpg', depois: 'cardapio-5-bebidas.jpg' },
+      { nome: 'Favoritos', antes: 'cardapio-antes-6-favorito.jpg', depois: 'cardapio-6-favorito.jpg' },
+    ],
+  },
+  {
+    grupo: 'Posts para pizzaria',
+    formato: '1',
+    pares: [
+      { nome: 'Post 1', antes: 'pizzaria-antes-1-promocao.jpg', depois: 'pizzaria-3.jpg' },
+      { nome: 'Post 2', antes: 'pizzaria-antes-2-rodizio.jpg', depois: 'pizzaria-8.jpg' },
+      { nome: 'Post 3', antes: 'pizzaria-antes-3-precos.jpg', depois: 'pizzaria-7.jpg' },
+    ],
+  },
 ];
 const PASTA_COMPARACOES = './assets/images/portfolio/';
 
@@ -318,9 +335,11 @@ const comparar = document.getElementById('comparar');
 
 if (comparar && COMPARACOES.length) {
   const controle = document.getElementById('comparar-controle');
+  const abas = document.getElementById('comparar-grupos');
   const paginas = document.getElementById('comparar-paginas');
   const imagemAntes = document.getElementById('comparar-antes');
   const imagemDepois = document.getElementById('comparar-depois');
+  let grupoAtivo = 0;
   let parAtivo = 0;
 
   const posicionar = (valor) => {
@@ -328,28 +347,49 @@ if (comparar && COMPARACOES.length) {
     comparar.style.setProperty('--pos', `${valor}%`);
   };
 
-  const mostrarPar = (indice) => {
-    parAtivo = indice;
-    const par = COMPARACOES[indice];
-    imagemAntes.src = PASTA_COMPARACOES + par.antes;
-    imagemAntes.alt = `Cardápio antes: ${par.nome}`;
-    imagemDepois.src = PASTA_COMPARACOES + par.depois;
-    imagemDepois.alt = `Cardápio depois: ${par.nome}`;
-    posicionar(50);
-
-    paginas.replaceChildren(
-      ...COMPARACOES.map((item, i) => {
-        const botao = criar('button', 'filter-chip', item.nome);
+  const criarBotoes = (destino, classe, nomes, ativo, aoEscolher) => {
+    destino.replaceChildren(
+      ...nomes.map((nome, i) => {
+        const botao = criar('button', classe, nome);
         botao.type = 'button';
-        botao.setAttribute('aria-pressed', String(i === parAtivo));
-        botao.addEventListener('click', () => mostrarPar(i));
+        botao.setAttribute('aria-pressed', String(i === ativo));
+        botao.addEventListener('click', () => aoEscolher(i));
         return botao;
       })
     );
   };
 
+  const mostrarPar = (indiceGrupo, indicePar) => {
+    grupoAtivo = indiceGrupo;
+    parAtivo = indicePar;
+    const grupo = COMPARACOES[grupoAtivo];
+    const par = grupo.pares[parAtivo];
+
+    comparar.style.setProperty('--formato', grupo.formato || '3 / 4');
+    imagemAntes.src = PASTA_COMPARACOES + par.antes;
+    imagemAntes.alt = `${grupo.grupo}, antes: ${par.nome}`;
+    imagemDepois.src = PASTA_COMPARACOES + par.depois;
+    imagemDepois.alt = `${grupo.grupo}, depois: ${par.nome}`;
+    posicionar(50);
+
+    criarBotoes(
+      abas,
+      'compare-tab',
+      COMPARACOES.map((item) => item.grupo),
+      grupoAtivo,
+      (i) => mostrarPar(i, 0)
+    );
+    criarBotoes(
+      paginas,
+      'filter-chip',
+      grupo.pares.map((item) => item.nome),
+      parAtivo,
+      (i) => mostrarPar(grupoAtivo, i)
+    );
+  };
+
   controle.addEventListener('input', () => posicionar(controle.value));
-  mostrarPar(0);
+  mostrarPar(0, 0);
 
   // Ao aparecer na tela, a linha vai e volta uma vez para mostrar que dá para arrastar.
   if ('IntersectionObserver' in window && !semMovimento) {
@@ -376,7 +416,6 @@ if (comparar && COMPARACOES.length) {
     vigia.observe(comparar);
   }
 }
-
 /* ----- Animações leves de entrada ----- */
 
 const itensAnimados = document.querySelectorAll('.reveal');
