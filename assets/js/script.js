@@ -101,7 +101,7 @@ const COMPARACOES = [
   },
   {
     grupo: 'Posts para pizzaria',
-    formato: '1',
+    formato: '3 / 4',
     pares: [
       { nome: 'Post 1', antes: 'pizzaria-antes-1-promocao.jpg', depois: 'pizzaria-3.jpg' },
       { nome: 'Post 2', antes: 'pizzaria-antes-2-rodizio.jpg', depois: 'pizzaria-8.jpg' },
