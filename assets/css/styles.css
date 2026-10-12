@@ -681,6 +681,11 @@ svg {
   overflow: hidden;
 }
 
+/* Imagens em pé: a capa mostra o topo da página, onde fica o título */
+.project-thumb.is-portrait img {
+  object-position: top;
+}
+
 /* Capa que alterna entre as imagens do projeto */
 .project-thumb.is-carousel img {
   position: absolute;
@@ -831,7 +836,7 @@ svg {
 
 .dialog-media.is-gallery a {
   display: block;
-  aspect-ratio: 1;
+  aspect-ratio: var(--formato, 1);
   overflow: hidden;
   animation: galeria-entrada 0.55s var(--ease) both;
   animation-delay: calc(var(--ordem, 0) * 80ms);

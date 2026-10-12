@@ -9,6 +9,9 @@
    selo:      etiqueta do card (remova a linha para não mostrar)
    imagens:   caminhos das imagens, ex.: ['./assets/images/portfolio/pizzaria-1.jpg']
               A primeira vira a capa. Deixe [] para mostrar o espaço reservado.
+   formato:   proporção das imagens na galeria (opcional). Padrão: quadrado.
+              Use '3 / 4' para páginas em pé, como cardápios.
+   unidade:   como chamar as imagens no aviso do card (opcional). Padrão: 'artes'.
    ========================================================================== */
 const CATEGORIAS = [
   'Restaurantes e pizzarias',
@@ -38,9 +41,18 @@ const PROJETOS = [
   {
     titulo: 'Cardápio digital para restaurante',
     categoria: 'Restaurantes e pizzarias',
-    descricao: 'Estudo de cardápio digital com categorias organizadas, pronto para compartilhar por link ou QR code.',
+    descricao: 'Cardápio digital de 6 páginas para restaurante, com capa, menu da casa, combos, destaques, bebidas e sobremesas.',
     selo: 'Projeto conceitual',
-    imagens: [],
+    formato: '3 / 4',
+    unidade: 'páginas',
+    imagens: [
+      './assets/images/portfolio/cardapio-1-capa.jpg',
+      './assets/images/portfolio/cardapio-2-menu.jpg',
+      './assets/images/portfolio/cardapio-3-combos.jpg',
+      './assets/images/portfolio/cardapio-4-destaques.jpg',
+      './assets/images/portfolio/cardapio-5-bebidas.jpg',
+      './assets/images/portfolio/cardapio-6-favorito.jpg',
+    ],
   },
   {
     titulo: 'Posts para barbearia',
@@ -151,6 +163,7 @@ const abrirProjeto = (projeto) => {
   const total = Math.max(1, imagens.length);
   // Com várias imagens, mostra uma grade; tocar numa imagem abre ela inteira.
   midia.classList.toggle('is-gallery', total > 1);
+  midia.style.setProperty('--formato', projeto.formato || '1');
   for (let i = 0; i < total; i += 1) {
     const item = criarMidia(projeto, i);
     if (total > 1) {
@@ -226,12 +239,13 @@ const desenharProjetos = () => {
 
       const capa = criar('span', 'project-thumb');
       capa.append(criarMidia(projeto));
+      if (projeto.formato) capa.classList.add('is-portrait');
       if (projeto.imagens && projeto.imagens.length > 1 && !semMovimento) {
         iniciarCarrossel(capa, projeto);
       }
       if (projeto.selo) capa.append(criar('span', 'project-badge', projeto.selo));
       if (projeto.imagens && projeto.imagens.length > 1) {
-        const aviso = criar('span', 'project-more', `Ver as ${projeto.imagens.length} artes `);
+        const aviso = criar('span', 'project-more', `Ver as ${projeto.imagens.length} ${projeto.unidade || 'artes'} `);
         const seta = criar('span', '', '→');
         seta.setAttribute('aria-hidden', 'true');
         aviso.append(seta);
