@@ -94,7 +94,11 @@ const linksSociais = {
 document.querySelectorAll('[data-link]').forEach((link) => {
   const tipo = link.dataset.link;
   if (tipo === 'email') {
-    link.href = `mailto:${CONFIG.email}`;
+    if (CONFIG.email) {
+      link.href = `mailto:${CONFIG.email}`;
+    } else {
+      link.closest('li').remove();
+    }
   } else if (linksSociais[tipo]) {
     abrirEmNovaAba(link, linksSociais[tipo]);
   }
