@@ -78,9 +78,19 @@ const abrirEmNovaAba = (link, url) => {
   link.rel = 'noopener noreferrer';
 };
 
+const ligarWhatsapp = (link, mensagem) => {
+  abrirEmNovaAba(link, whatsappUrl(mensagem));
+  abrirNoApp(
+    link,
+    'whatsapp',
+    `phone=${CONFIG.whatsapp}&text=${encodeURIComponent(mensagem)}`,
+    whatsappUrl(mensagem)
+  );
+};
+
 const aplicarWhatsapp = (raiz = document) => {
   raiz.querySelectorAll('[data-whatsapp]').forEach((link) => {
-    abrirEmNovaAba(link, whatsappUrl(link.dataset.whatsapp));
+    ligarWhatsapp(link, link.dataset.whatsapp);
   });
 };
 
@@ -101,6 +111,7 @@ document.querySelectorAll('[data-link]').forEach((link) => {
     }
   } else if (linksSociais[tipo]) {
     abrirEmNovaAba(link, linksSociais[tipo]);
+    abrirNoApp(link, tipo, CONFIG[tipo], linksSociais[tipo]);
   }
 });
 
@@ -159,9 +170,9 @@ const abrirProjeto = (projeto) => {
     : projeto.categoria;
   document.getElementById('projeto-titulo').textContent = projeto.titulo;
   document.getElementById('projeto-descricao').textContent = projeto.descricao;
-  abrirEmNovaAba(
+  ligarWhatsapp(
     document.getElementById('projeto-cta'),
-    whatsappUrl(`Olá! Vi o projeto "${projeto.titulo}" no site e quero algo parecido para o meu negócio.`)
+    `Olá! Vi o projeto "${projeto.titulo}" no site e quero algo parecido para o meu negócio.`
   );
 
   if (typeof dialogo.showModal === 'function') {

@@ -7,10 +7,10 @@ const abrirEmNovaAba = (link, url) => {
 };
 
 document.querySelectorAll('[data-whatsapp]').forEach((link) => {
-  abrirEmNovaAba(
-    link,
-    `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(link.dataset.whatsapp)}`
-  );
+  const mensagem = encodeURIComponent(link.dataset.whatsapp);
+  const web = `https://wa.me/${CONFIG.whatsapp}?text=${mensagem}`;
+  abrirEmNovaAba(link, web);
+  abrirNoApp(link, 'whatsapp', `phone=${CONFIG.whatsapp}&text=${mensagem}`, web);
 });
 
 const enderecos = {
@@ -24,6 +24,7 @@ document.querySelectorAll('[data-link]').forEach((link) => {
     link.href = CONFIG.site;
   } else if (enderecos[tipo]) {
     abrirEmNovaAba(link, enderecos[tipo]);
+    abrirNoApp(link, tipo, CONFIG[tipo], enderecos[tipo]);
   }
 });
 
