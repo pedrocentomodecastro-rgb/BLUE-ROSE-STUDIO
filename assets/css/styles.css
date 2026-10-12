@@ -758,8 +758,8 @@ svg {
   align-items: center;
   gap: 0.35rem;
   position: absolute;
+  top: 0.75rem;
   right: 0.75rem;
-  bottom: 0.75rem;
   z-index: 1;
   padding: 0.35rem 0.7rem;
   border-radius: 2rem;
@@ -812,6 +812,11 @@ svg {
 .compare {
   display: grid;
   gap: 2rem;
+}
+
+/* Sem isto, a fileira de botões alarga a coluna e a página passa da tela no celular */
+.compare > * {
+  min-width: 0;
 }
 
 .compare-text {
