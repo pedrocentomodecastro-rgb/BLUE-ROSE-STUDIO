@@ -775,6 +775,15 @@ svg {
   gap: 2px;
 }
 
+.dialog-media.is-gallery {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.dialog-media.is-gallery a {
+  display: block;
+  aspect-ratio: 1;
+}
+
 .dialog-media .placeholder {
   min-height: 15rem;
 }

@@ -21,9 +21,19 @@ const PROJETOS = [
   {
     titulo: 'Posts para pizzaria',
     categoria: 'Restaurantes e pizzarias',
-    descricao: 'Estudo de artes para feed e stories com promoções, sabores da semana e divulgação de delivery.',
+    descricao: 'Pacote de 9 artes para o feed de uma pizzaria, com promoções, oferta 2 por 1 e divulgação de delivery.',
     selo: 'Projeto conceitual',
-    imagens: [],
+    imagens: [
+      './assets/images/portfolio/pizzaria-5.jpg',
+      './assets/images/portfolio/pizzaria-3.jpg',
+      './assets/images/portfolio/pizzaria-2.jpg',
+      './assets/images/portfolio/pizzaria-1.jpg',
+      './assets/images/portfolio/pizzaria-8.jpg',
+      './assets/images/portfolio/pizzaria-7.jpg',
+      './assets/images/portfolio/pizzaria-9.jpg',
+      './assets/images/portfolio/pizzaria-6.jpg',
+      './assets/images/portfolio/pizzaria-4.jpg',
+    ],
   },
   {
     titulo: 'Cardápio digital para restaurante',
@@ -122,8 +132,22 @@ const criarMidia = (projeto, indice = 0) => {
 const abrirProjeto = (projeto) => {
   const midia = document.getElementById('projeto-midia');
   midia.replaceChildren();
-  const total = Math.max(1, (projeto.imagens || []).length);
-  for (let i = 0; i < total; i += 1) midia.append(criarMidia(projeto, i));
+  const imagens = projeto.imagens || [];
+  const total = Math.max(1, imagens.length);
+  // Com várias imagens, mostra uma grade; tocar numa imagem abre ela inteira.
+  midia.classList.toggle('is-gallery', total > 1);
+  for (let i = 0; i < total; i += 1) {
+    const item = criarMidia(projeto, i);
+    if (total > 1) {
+      const link = criar('a');
+      abrirEmNovaAba(link, imagens[i]);
+      link.setAttribute('aria-label', `Abrir imagem ${i + 1} de ${total} em tamanho maior`);
+      link.append(item);
+      midia.append(link);
+    } else {
+      midia.append(item);
+    }
+  }
 
   document.getElementById('projeto-categoria').textContent = projeto.selo
     ? `${projeto.categoria} · ${projeto.selo}`
