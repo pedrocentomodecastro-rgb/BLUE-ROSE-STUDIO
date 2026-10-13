@@ -75,6 +75,21 @@ const PROJETOS = [
     ],
   },
   {
+    titulo: 'Carrossel para barbearia',
+    categoria: 'Barbearias',
+    descricao: 'Carrossel de 5 imagens para o feed de uma barbearia, com dicas de cuidado com a barba e chamada para agendar no final. O carrossel inteiro conta como 1 post.',
+    selo: 'Projeto conceitual',
+    formato: '4 / 5',
+    unidade: 'imagens',
+    imagens: [
+      './assets/images/portfolio/barbearia-carrossel-1.jpg',
+      './assets/images/portfolio/barbearia-carrossel-2.jpg',
+      './assets/images/portfolio/barbearia-carrossel-3.jpg',
+      './assets/images/portfolio/barbearia-carrossel-4.jpg',
+      './assets/images/portfolio/barbearia-carrossel-5.jpg',
+    ],
+  },
+  {
     titulo: 'Stories para pet shop',
     categoria: 'Pet shops',
     descricao: 'Pacote de 9 stories para pet shop, com promoção 2x1, rações e acessórios e campanha de adoção.',
