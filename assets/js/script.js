@@ -19,6 +19,7 @@ const CATEGORIAS = [
   'Restaurantes e pizzarias',
   'Barbearias',
   'Pet shops',
+  'Páginas de links',
   'Minisites',
 ];
 
@@ -90,6 +91,19 @@ const PROJETOS = [
       './assets/images/portfolio/petshop-7-mimo-pet.jpg',
       './assets/images/portfolio/petshop-8-desconto.jpg',
       './assets/images/portfolio/petshop-9-melhor-racao.jpg',
+    ],
+  },
+  {
+    titulo: 'Página de links para pet shop',
+    categoria: 'Páginas de links',
+    descricao: 'Página de links para a bio do Instagram de um pet shop, com pedido pelo WhatsApp, promoção da semana, banho e tosa, endereço e ofertas. Feita para celular.',
+    selo: 'Projeto conceitual',
+    formato: '9 / 16',
+    unidade: 'telas',
+    link: './mimopet',
+    imagens: [
+      './assets/images/portfolio/links-petshop-1.jpg',
+      './assets/images/portfolio/links-petshop-2.jpg',
     ],
   },
   {
