@@ -92,7 +92,7 @@ const PROJETOS = [
   {
     titulo: 'Stories para pet shop',
     categoria: 'Pet shops',
-    descricao: 'Pacote de 9 stories para pet shop, com promoção 2x1, rações e acessórios e campanha de adoção.',
+    descricao: 'Pacote de 7 stories para pet shop, com promoção 2x1, rações e acessórios e campanha de adoção.',
     selo: 'Projeto conceitual',
     formato: '9 / 16',
     unidade: 'stories',
@@ -104,8 +104,6 @@ const PROJETOS = [
       './assets/images/portfolio/petshop-5-melhor-cuidado.jpg',
       './assets/images/portfolio/petshop-6-racoes-acessorios.jpg',
       './assets/images/portfolio/petshop-7-mimo-pet.jpg',
-      './assets/images/portfolio/petshop-8-desconto.jpg',
-      './assets/images/portfolio/petshop-9-melhor-racao.jpg',
     ],
   },
   {
@@ -194,8 +192,6 @@ const COMPARACOES = [
       { nome: 'Gato', antes: 'petshop-antes-5-melhor-cuidado.jpg', depois: 'petshop-5-melhor-cuidado.jpg' },
       { nome: 'Acessórios', antes: 'petshop-antes-6-racoes-acessorios.jpg', depois: 'petshop-6-racoes-acessorios.jpg' },
       { nome: 'Rações', antes: 'petshop-antes-7-mimo-pet.jpg', depois: 'petshop-7-mimo-pet.jpg' },
-      { nome: 'Desconto', antes: 'petshop-antes-8-desconto.jpg', depois: 'petshop-8-desconto.jpg' },
-      { nome: 'Petiscos', antes: 'petshop-antes-9-melhor-racao.jpg', depois: 'petshop-9-melhor-racao.jpg' },
     ],
   },
 ];
