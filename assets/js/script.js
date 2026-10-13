@@ -12,6 +12,8 @@
    formato:   proporção das imagens na galeria (opcional). Padrão: quadrado.
               Use '3 / 4' para páginas em pé, como cardápios.
    unidade:   como chamar as imagens no aviso do card (opcional). Padrão: 'artes'.
+   link:      endereço de um site para visitar (opcional). Mostra o botão
+              "Abrir o site" ao abrir o projeto.
    ========================================================================== */
 const CATEGORIAS = [
   'Restaurantes e pizzarias',
@@ -91,11 +93,18 @@ const PROJETOS = [
     ],
   },
   {
-    titulo: 'Minisite para negócio local',
+    titulo: 'Minisite para barbearia',
     categoria: 'Minisites',
-    descricao: 'Estudo de página única com apresentação, serviços, localização e botão de WhatsApp.',
+    descricao: 'Página única para barbearia, com serviços e preços, promoções da semana, horários, endereço e agendamento pelo WhatsApp. Funciona no celular e no computador.',
     selo: 'Projeto conceitual',
-    imagens: [],
+    formato: '9 / 16',
+    unidade: 'telas',
+    link: './dom-cortes',
+    imagens: [
+      './assets/images/portfolio/minisite-barbearia-1.jpg',
+      './assets/images/portfolio/minisite-barbearia-2.jpg',
+      './assets/images/portfolio/minisite-barbearia-3.jpg',
+    ],
   },
 ];
 
@@ -269,6 +278,9 @@ const abrirProjeto = (projeto) => {
     : projeto.categoria;
   document.getElementById('projeto-titulo').textContent = projeto.titulo;
   document.getElementById('projeto-descricao').textContent = projeto.descricao;
+  const visitar = document.getElementById('projeto-link');
+  visitar.hidden = !projeto.link;
+  if (projeto.link) abrirEmNovaAba(visitar, projeto.link);
   ligarWhatsapp(
     document.getElementById('projeto-cta'),
     `Olá! Vi o projeto "${projeto.titulo}" no site e quero algo parecido para o meu negócio.`
