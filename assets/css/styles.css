@@ -1071,6 +1071,151 @@ svg {
   height: 1.1rem;
 }
 
+/* ----- Ficha do pedido ----- */
+
+.order-dialog {
+  color-scheme: dark;
+}
+
+.order-price {
+  margin-top: -0.4rem;
+  color: var(--brand-blue-light);
+  font-family: var(--heading-family);
+  font-size: 1.6rem;
+  line-height: 1.2;
+}
+
+.order-form,
+.order-group {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.order-group {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.order-group[hidden] {
+  display: none;
+}
+
+.field {
+  display: grid;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.field > * {
+  min-width: 0;
+}
+
+.field label,
+.field-label {
+  color: var(--text-soft);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.field-optional {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.field input:not([type="radio"]),
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-button);
+  background: rgba(5, 6, 11, 0.6);
+  color: var(--text);
+  font-family: var(--body-family);
+  font-size: 1rem;
+  line-height: 1.4;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field textarea {
+  min-height: 6.5rem;
+  resize: vertical;
+}
+
+.field select {
+  padding-right: 2.6rem;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233da0ff' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-position: right 0.85rem center;
+  background-repeat: no-repeat;
+  background-size: 1.1rem;
+}
+
+.field ::placeholder {
+  color: var(--text-muted);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--brand-blue-light);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(30, 91, 255, 0.3);
+}
+
+.was-checked .field :invalid {
+  border-color: #ff6b6b;
+}
+
+.choice-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.field .choice {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 2rem;
+  color: var(--text);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.choice:has(input:checked) {
+  border-color: var(--brand-blue);
+  background: rgba(30, 91, 255, 0.16);
+}
+
+.choice input {
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  accent-color: var(--brand-blue);
+}
+
+.order-error {
+  color: #ff8a8a;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.order-error[hidden] {
+  display: none;
+}
+
+.price-old {
+  margin-left: 0.3rem;
+  color: var(--text-muted);
+}
+
 /* ----- Como funciona ----- */
 
 .steps {
@@ -1257,6 +1402,12 @@ svg {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  /* Card que sobra sozinho na última linha ocupa a linha inteira */
+  .services-grid > :last-child:nth-child(odd),
+  .pricing-grid > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
   .steps {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1.5rem;
@@ -1301,6 +1452,15 @@ svg {
   .pricing-grid,
   .portfolio-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  /* Com 3 colunas, o card que sobra sozinho fica no meio */
+  .pricing-grid > :last-child:nth-child(odd) {
+    grid-column: auto;
+  }
+
+  .pricing-grid > :last-child:nth-child(3n + 1) {
+    grid-column: 2;
   }
 
   .service-card {

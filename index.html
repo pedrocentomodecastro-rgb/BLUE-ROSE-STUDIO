@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/css/styles.css?v=19">
+  <link rel="stylesheet" href="./assets/css/styles.css?v=20">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -118,6 +118,16 @@
             <p class="service-price">A partir de <strong>R$ 350</strong></p>
             <a class="text-link" href="#contato" data-whatsapp="Olá! Gostaria de solicitar um orçamento de Minisite.">Solicitar orçamento <span aria-hidden="true">→</span></a>
           </article>
+
+          <article class="card service-card reveal">
+            <span class="icon-box" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 16l5-5 4 4M14 13l2-2 5 5"/><path d="M15.5 3.5v4M13.5 5.5h4"/></svg>
+            </span>
+            <h3>Melhoria de imagens</h3>
+            <p>Deixamos as fotos dos seus produtos mais nítidas e com mais resolução, prontas para posts, cardápios e sites.</p>
+            <p class="service-price">A partir de <strong>R$ 15</strong></p>
+            <a class="text-link" href="#contato" data-whatsapp="Olá! Gostaria de solicitar um orçamento de Melhoria de imagens.">Solicitar orçamento <span aria-hidden="true">→</span></a>
+          </article>
         </div>
       </div>
     </section>
@@ -142,7 +152,7 @@
               <li>Arquivo pronto para publicar</li>
               <li>1 rodada de ajustes</li>
             </ul>
-            <a class="btn btn-ghost" href="#contato" data-whatsapp="Olá! Quero o pacote Post Avulso (R$ 35).">Quero este pacote</a>
+            <a class="btn btn-ghost" href="#contato" data-pedido="avulso">Quero este pacote</a>
           </article>
 
           <article class="card price-card reveal">
@@ -154,7 +164,7 @@
               <li>Arquivos prontos para publicar</li>
               <li>1 rodada de ajustes por arte</li>
             </ul>
-            <a class="btn btn-ghost" href="#contato" data-whatsapp="Olá! Quero o Pacote Essencial (R$ 120).">Quero este pacote</a>
+            <a class="btn btn-ghost" href="#contato" data-pedido="essencial">Quero este pacote</a>
           </article>
 
           <article class="card price-card is-featured reveal">
@@ -167,7 +177,7 @@
               <li>Arquivos prontos para publicar</li>
               <li>1 rodada de ajustes por arte</li>
             </ul>
-            <a class="btn btn-primary" href="#contato" data-whatsapp="Olá! Quero o Pacote Presença (R$ 220).">Quero este pacote</a>
+            <a class="btn btn-primary" href="#contato" data-pedido="presenca">Quero este pacote</a>
           </article>
 
           <article class="card price-card reveal">
@@ -180,7 +190,7 @@
               <li>Arquivo para compartilhar</li>
               <li>1 rodada de ajustes</li>
             </ul>
-            <a class="btn btn-ghost" href="#contato" data-whatsapp="Olá! Quero o Cardápio Digital (a partir de R$ 90).">Quero este pacote</a>
+            <a class="btn btn-ghost" href="#contato" data-pedido="cardapio">Quero este pacote</a>
           </article>
 
           <article class="card price-card reveal">
@@ -193,7 +203,7 @@
               <li>Layout adaptado para celular</li>
               <li>1 rodada de ajustes</li>
             </ul>
-            <a class="btn btn-ghost" href="#contato" data-whatsapp="Olá! Quero a Página de Links (R$ 120).">Quero este pacote</a>
+            <a class="btn btn-ghost" href="#contato" data-pedido="links">Quero este pacote</a>
           </article>
 
           <article class="card price-card reveal">
@@ -208,7 +218,20 @@
               <li>Layout adaptado para celular</li>
               <li>1 rodada de ajustes</li>
             </ul>
-            <a class="btn btn-ghost" href="#contato" data-whatsapp="Olá! Quero o Minisite Básico (a partir de R$ 350).">Quero este pacote</a>
+            <a class="btn btn-ghost" href="#contato" data-pedido="minisite">Quero este pacote</a>
+          </article>
+
+          <article class="card price-card reveal">
+            <h3>Melhoria de Imagem</h3>
+            <p class="price"><span class="price-prefix">A partir de</span><span class="price-value">R$ 15</span></p>
+            <ul class="check-list">
+              <li>1 imagem: R$ 15</li>
+              <li>5 imagens: R$ 70</li>
+              <li>10 imagens: R$ 100 <s class="price-old">R$ 120</s></li>
+              <li>Mais nitidez e resolução</li>
+              <li>Ideal para fotos de produtos e pratos</li>
+            </ul>
+            <a class="btn btn-ghost" href="#contato" data-pedido="imagem">Quero este pacote</a>
           </article>
         </div>
 
@@ -272,18 +295,18 @@
         <ol class="steps">
           <li class="step reveal">
             <span class="step-number">01</span>
-            <h3>Conte sua ideia</h3>
-            <p>Você explica o que seu negócio precisa.</p>
+            <h3>Faça o pedido</h3>
+            <p>Escolha o pacote e preencha a ficha. Ela chega direto no nosso WhatsApp.</p>
           </li>
           <li class="step reveal">
             <span class="step-number">02</span>
-            <h3>Criamos seu projeto</h3>
-            <p>Desenvolvemos o material de acordo com o serviço contratado.</p>
+            <h3>Confirme e pague</h3>
+            <p>Conferimos os detalhes com você e o pagamento é por Pix.</p>
           </li>
           <li class="step reveal">
             <span class="step-number">03</span>
             <h3>Receba tudo pronto</h3>
-            <p>Após a aprovação, você recebe os arquivos finais.</p>
+            <p>Criamos o material e, após a sua aprovação, você recebe os arquivos finais.</p>
           </li>
         </ol>
       </div>
@@ -354,8 +377,139 @@
     </div>
   </dialog>
 
+  <!-- Ficha do pedido: os pacotes ficam na lista PACOTES, em assets/js/script.js.
+       Cada grupo de perguntas abaixo (data-tipo) aparece só para o tipo de pacote dele. -->
+  <dialog class="project-dialog order-dialog" id="pedido-dialogo" aria-labelledby="pedido-titulo">
+    <button class="dialog-close" type="button" id="pedido-fechar" aria-label="Fechar a ficha do pedido">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="dialog-body">
+      <p class="eyebrow">Ficha do pedido</p>
+      <h3 id="pedido-titulo">Seu pedido</h3>
+      <p class="order-price" id="pedido-preco"></p>
+
+      <form class="order-form" id="pedido-ficha" novalidate>
+        <div class="field">
+          <label for="pedido-pacote">Pacote</label>
+          <select id="pedido-pacote" name="pacote" data-rotulo="Pacote"></select>
+        </div>
+
+        <div class="field">
+          <label for="pedido-nome">Seu nome</label>
+          <input id="pedido-nome" name="nome" data-rotulo="Nome" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="pedido-negocio">Nome do negócio</label>
+          <input id="pedido-negocio" name="negocio" data-rotulo="Negócio" autocomplete="organization" required>
+        </div>
+        <div class="field">
+          <label for="pedido-ramo">Ramo do negócio</label>
+          <input id="pedido-ramo" name="ramo" data-rotulo="Ramo" placeholder="Pizzaria, barbearia, salão, loja..." required>
+        </div>
+        <div class="field">
+          <label for="pedido-instagram">Instagram do negócio <span class="field-optional">(opcional)</span></label>
+          <input id="pedido-instagram" name="instagram" data-rotulo="Instagram" placeholder="@seunegocio" autocapitalize="off">
+        </div>
+
+        <fieldset class="order-group" data-tipo="artes">
+          <div class="field">
+            <label for="pedido-formato">Formato das artes</label>
+            <select id="pedido-formato" name="formato" data-rotulo="Formato">
+              <option>Post para o feed</option>
+              <option>Story</option>
+              <option>Carrossel (várias imagens no mesmo post)</option>
+              <option>Misturado</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="pedido-divulgar">O que as artes devem divulgar?</label>
+            <textarea id="pedido-divulgar" name="divulgar" data-rotulo="O que divulgar" placeholder="Ex.: promoção de terça, rodízio a R$ 39,90, horário de funcionamento..." required></textarea>
+          </div>
+        </fieldset>
+
+        <fieldset class="order-group" data-tipo="cardapio">
+          <div class="field">
+            <label for="pedido-produtos">Quantos produtos?</label>
+            <select id="pedido-produtos" name="produtos" data-rotulo="Produtos">
+              <option>Até 15</option>
+              <option>De 16 a 30</option>
+              <option>Mais de 30</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="pedido-itens">Itens e preços <span class="field-optional">(opcional)</span></label>
+            <textarea id="pedido-itens" name="itens" data-rotulo="Itens e preços" placeholder="Pode escrever aqui ou mandar uma foto do cardápio atual no WhatsApp."></textarea>
+          </div>
+        </fieldset>
+
+        <fieldset class="order-group" data-tipo="links">
+          <div class="field">
+            <label for="pedido-botoes">Quais links e botões a página deve ter?</label>
+            <textarea id="pedido-botoes" name="botoes" data-rotulo="Links e botões" placeholder="Ex.: WhatsApp, Instagram, iFood, localização, cardápio..." required></textarea>
+          </div>
+        </fieldset>
+
+        <fieldset class="order-group" data-tipo="minisite">
+          <div class="field">
+            <label for="pedido-secoes">O que o site precisa mostrar?</label>
+            <textarea id="pedido-secoes" name="secoes" data-rotulo="O que mostrar" placeholder="Ex.: apresentação, serviços e preços, fotos, horários, endereço..." required></textarea>
+          </div>
+          <div class="field">
+            <label for="pedido-dominio">Já tem um endereço próprio (domínio)?</label>
+            <select id="pedido-dominio" name="dominio" data-rotulo="Domínio">
+              <option>Não</option>
+              <option>Sim</option>
+              <option>Não sei</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <fieldset class="order-group" data-tipo="imagem">
+          <div class="field">
+            <label for="pedido-quantidade">Quantas imagens?</label>
+            <select id="pedido-quantidade" name="quantidade" data-rotulo="Quantidade">
+              <option>1 imagem (R$ 15)</option>
+              <option>5 imagens (R$ 70)</option>
+              <option>10 imagens (R$ 100)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="pedido-uso">O que as fotos mostram e onde vão usar? <span class="field-optional">(opcional)</span></label>
+            <textarea id="pedido-uso" name="uso" data-rotulo="Fotos e uso" placeholder="Ex.: fotos dos pratos para o cardápio e o Instagram."></textarea>
+          </div>
+        </fieldset>
+
+        <fieldset class="order-group" data-tipo="artes cardapio links minisite">
+          <div class="field">
+            <label for="pedido-estilo">Cores ou estilo que você gosta <span class="field-optional">(opcional)</span></label>
+            <input id="pedido-estilo" name="estilo" data-rotulo="Cores e estilo" placeholder="Ex.: preto e dourado, algo mais clássico...">
+          </div>
+          <div class="field">
+            <span class="field-label" id="pedido-logo-rotulo">Já tem logotipo?</span>
+            <div class="choice-row" role="radiogroup" aria-labelledby="pedido-logo-rotulo">
+              <label class="choice"><input type="radio" name="logo" value="Sim" data-rotulo="Tem logotipo" checked> Sim</label>
+              <label class="choice"><input type="radio" name="logo" value="Não" data-rotulo="Tem logotipo"> Não</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="pedido-obs">Observações <span class="field-optional">(opcional)</span></label>
+          <textarea id="pedido-obs" name="obs" data-rotulo="Observações" placeholder="Prazo, referências, qualquer detalhe que ajude."></textarea>
+        </div>
+
+        <p class="fine-print">Ao enviar, o WhatsApp abre com o seu pedido já escrito. Fotos e logotipo você manda por lá. Depois de conferirmos os detalhes, o pagamento é por Pix.</p>
+        <p class="order-error" id="pedido-erro" role="alert" hidden>Preencha os campos marcados para enviar.</p>
+        <button class="btn btn-primary btn-large" type="submit">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 21l2.1-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>
+          Enviar pedido pelo WhatsApp
+        </button>
+      </form>
+    </div>
+  </dialog>
+
   <script src="./assets/js/config.js?v=19"></script>
   <script src="./assets/js/links.js?v=19"></script>
-  <script src="./assets/js/script.js?v=22"></script>
+  <script src="./assets/js/script.js?v=23"></script>
 </body>
 </html>

@@ -198,6 +198,25 @@ const COMPARACOES = [
 const PASTA_COMPARACOES = './assets/images/portfolio/';
 
 /* ==========================================================================
+   FICHA DO PEDIDO — pacotes que aparecem na ficha
+   --------------------------------------------------------------------------
+   id:    o mesmo valor do data-pedido do botão "Quero este pacote"
+   nome:  nome do pacote na ficha e na mensagem
+   preco: preço mostrado na ficha e na mensagem
+   tipo:  qual grupo de perguntas aparece: 'artes', 'cardapio', 'links',
+          'minisite' ou 'imagem' (os grupos ficam no index.html, em data-tipo)
+   ========================================================================== */
+const PACOTES = [
+  { id: 'avulso', nome: 'Post Avulso (1 arte)', preco: 'R$ 35', tipo: 'artes' },
+  { id: 'essencial', nome: 'Pacote Essencial (4 artes)', preco: 'R$ 120', tipo: 'artes' },
+  { id: 'presenca', nome: 'Pacote Presença (8 artes)', preco: 'R$ 220', tipo: 'artes' },
+  { id: 'cardapio', nome: 'Cardápio Digital', preco: 'a partir de R$ 90', tipo: 'cardapio' },
+  { id: 'links', nome: 'Página de Links', preco: 'R$ 120', tipo: 'links' },
+  { id: 'minisite', nome: 'Minisite Básico', preco: 'a partir de R$ 350', tipo: 'minisite' },
+  { id: 'imagem', nome: 'Melhoria de Imagem', preco: 'a partir de R$ 15', tipo: 'imagem' },
+];
+
+/* ==========================================================================
    A partir daqui é o funcionamento do site — não precisa editar
    ========================================================================== */
 
@@ -505,6 +524,93 @@ if (comparar && COMPARACOES.length) {
     vigia.observe(comparar);
   }
 }
+
+/* ----- Ficha do pedido ----- */
+
+const pedido = document.getElementById('pedido-dialogo');
+
+if (pedido && PACOTES.length) {
+  const ficha = document.getElementById('pedido-ficha');
+  const escolha = document.getElementById('pedido-pacote');
+  const erro = document.getElementById('pedido-erro');
+  const grupos = ficha.querySelectorAll('.order-group');
+
+  escolha.replaceChildren(
+    ...PACOTES.map((pacote) => {
+      const opcao = criar('option', '', pacote.nome);
+      opcao.value = pacote.id;
+      return opcao;
+    })
+  );
+
+  const pacoteEscolhido = () => PACOTES.find((pacote) => pacote.id === escolha.value) || PACOTES[0];
+
+  // Mostra só as perguntas do tipo do pacote. Grupo escondido fica desativado,
+  // assim os campos dele não são exigidos nem entram na mensagem.
+  const mostrarPerguntas = () => {
+    const pacote = pacoteEscolhido();
+    document.getElementById('pedido-titulo').textContent = pacote.nome;
+    document.getElementById('pedido-preco').textContent = pacote.preco;
+    grupos.forEach((grupo) => {
+      const ativo = grupo.dataset.tipo.split(' ').includes(pacote.tipo);
+      grupo.hidden = !ativo;
+      grupo.disabled = !ativo;
+    });
+  };
+
+  const abrirPedido = (id) => {
+    escolha.value = id;
+    mostrarPerguntas();
+    erro.hidden = true;
+    if (typeof pedido.showModal === 'function') {
+      pedido.showModal();
+    } else {
+      pedido.setAttribute('open', '');
+    }
+  };
+
+  const montarMensagem = () => {
+    const pacote = pacoteEscolhido();
+    const linhas = ['Olá! Quero fazer um pedido pelo site.', '', `*${pacote.nome}* · ${pacote.preco}`];
+    const dados = new FormData(ficha);
+    dados.forEach((valor, nome) => {
+      const texto = String(valor).trim();
+      if (nome === 'pacote' || !texto) return;
+      const campo = ficha.querySelector(`[name="${nome}"]`);
+      linhas.push(`${campo.dataset.rotulo}: ${texto}`);
+    });
+    return linhas.join('\n');
+  };
+
+  escolha.addEventListener('change', mostrarPerguntas);
+
+  ficha.addEventListener('submit', (evento) => {
+    evento.preventDefault();
+    if (!ficha.checkValidity()) {
+      erro.hidden = false;
+      ficha.classList.add('was-checked');
+      ficha.querySelector(':invalid').focus();
+      return;
+    }
+    erro.hidden = true;
+    const envio = criar('a');
+    ligarWhatsapp(envio, montarMensagem());
+    envio.click();
+  });
+
+  document.querySelectorAll('[data-pedido]').forEach((botao) => {
+    botao.addEventListener('click', (evento) => {
+      evento.preventDefault();
+      abrirPedido(botao.dataset.pedido);
+    });
+  });
+
+  document.getElementById('pedido-fechar').addEventListener('click', () => pedido.close());
+  pedido.addEventListener('click', (evento) => {
+    if (evento.target === pedido) pedido.close();
+  });
+}
+
 /* ----- Animações leves de entrada ----- */
 
 const itensAnimados = document.querySelectorAll('.reveal');
