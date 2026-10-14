@@ -207,13 +207,13 @@ const PASTA_COMPARACOES = './assets/images/portfolio/';
           'minisite' ou 'imagem' (os grupos ficam no index.html, em data-tipo)
    ========================================================================== */
 const PACOTES = [
+  { id: 'imagem', nome: 'Melhoria de Imagem', preco: 'a partir de R$ 15', tipo: 'imagem' },
   { id: 'avulso', nome: 'Post Avulso (1 arte)', preco: 'R$ 35', tipo: 'artes' },
   { id: 'essencial', nome: 'Pacote Essencial (4 artes)', preco: 'R$ 120', tipo: 'artes' },
   { id: 'presenca', nome: 'Pacote Presença (8 artes)', preco: 'R$ 220', tipo: 'artes' },
   { id: 'cardapio', nome: 'Cardápio Digital', preco: 'a partir de R$ 90', tipo: 'cardapio' },
   { id: 'links', nome: 'Página de Links', preco: 'R$ 120', tipo: 'links' },
   { id: 'minisite', nome: 'Minisite Básico', preco: 'a partir de R$ 350', tipo: 'minisite' },
-  { id: 'imagem', nome: 'Melhoria de Imagem', preco: 'a partir de R$ 15', tipo: 'imagem' },
 ];
 
 /* ==========================================================================

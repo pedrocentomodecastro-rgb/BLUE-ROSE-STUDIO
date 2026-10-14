@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/css/styles.css?v=20">
+  <link rel="stylesheet" href="./assets/css/styles.css?v=21">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -40,8 +40,14 @@
     <!-- ===== CABEÇALHO ===== -->
     <section class="hero" id="topo">
       <div class="container hero-inner">
-        <div class="brand-symbol reveal">
-          <img src="./assets/images/rose-symbol.png" alt="Rosa azul, símbolo da Blue Rose Studio" width="420" height="420">
+        <!-- A rosa desabrocha em camadas: miolo, pétalas de dentro, pétalas de fora e folhas -->
+        <div class="brand-symbol">
+          <span class="bloom-ring" aria-hidden="true"></span>
+          <img class="bloom-layer bloom-1" src="./assets/images/rose-symbol.png" alt="" width="420" height="420" aria-hidden="true">
+          <img class="bloom-layer bloom-2" src="./assets/images/rose-symbol.png" alt="" width="420" height="420" aria-hidden="true">
+          <img class="bloom-layer bloom-3" src="./assets/images/rose-symbol.png" alt="" width="420" height="420" aria-hidden="true">
+          <img class="bloom-layer bloom-4" src="./assets/images/rose-symbol.png" alt="" width="420" height="420" aria-hidden="true">
+          <img class="bloom-full" src="./assets/images/rose-symbol.png" alt="Rosa azul, símbolo da Blue Rose Studio" width="420" height="420">
         </div>
         <p class="brand-wordmark reveal">
           <span class="brand-name">Blue <em>Rose</em></span>
@@ -56,11 +62,19 @@
       </div>
     </section>
 
+    <!-- Faixa com os serviços correndo (repetida duas vezes para o movimento não ter emenda) -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Posts para Instagram</span><span>Carrosséis</span><span>Cardápios digitais</span><span>Páginas de links</span><span>Minisites</span><span>Melhoria de imagens</span>
+        <span>Posts para Instagram</span><span>Carrosséis</span><span>Cardápios digitais</span><span>Páginas de links</span><span>Minisites</span><span>Melhoria de imagens</span>
+      </div>
+    </div>
+
     <!-- ===== SOBRE ===== -->
     <section class="section" id="sobre">
       <div class="container about">
         <div class="reveal">
-          <p class="eyebrow">Sobre a agência</p>
+          <p class="eyebrow"><span class="eyebrow-num">01</span>Sobre a agência</p>
           <h2>Sua presença digital <em>começa aqui.</em></h2>
         </div>
         <div class="about-text reveal">
@@ -74,7 +88,7 @@
     <section class="section" id="servicos">
       <div class="container">
         <div class="section-head reveal">
-          <p class="eyebrow">Nossos serviços</p>
+          <p class="eyebrow"><span class="eyebrow-num">02</span>Nossos serviços</p>
           <h2>O que criamos para o <em>seu negócio.</em></h2>
         </div>
 
@@ -138,11 +152,24 @@
     <section class="section section-tinted" id="pacotes">
       <div class="container">
         <div class="section-head reveal">
-          <p class="eyebrow">Pacotes e preços</p>
+          <p class="eyebrow"><span class="eyebrow-num">03</span>Pacotes e preços</p>
           <h2>Escolha o pacote ideal para <em>seu negócio.</em></h2>
         </div>
 
         <div class="pricing-grid">
+          <article class="card price-card reveal">
+            <h3>Melhoria de Imagem</h3>
+            <p class="price"><span class="price-prefix">A partir de</span><span class="price-value">R$ 15</span></p>
+            <ul class="check-list">
+              <li>1 imagem: R$ 15</li>
+              <li>5 imagens: R$ 70</li>
+              <li>10 imagens: R$ 100 <s class="price-old">R$ 120</s></li>
+              <li>Mais nitidez e resolução</li>
+              <li>Ideal para fotos de produtos e pratos</li>
+            </ul>
+            <a class="btn btn-ghost" href="#contato" data-pedido="imagem">Quero este pacote</a>
+          </article>
+
           <article class="card price-card reveal">
             <h3>Post Avulso</h3>
             <p class="price"><span class="price-value">R$ 35</span></p>
@@ -220,19 +247,6 @@
             </ul>
             <a class="btn btn-ghost" href="#contato" data-pedido="minisite">Quero este pacote</a>
           </article>
-
-          <article class="card price-card reveal">
-            <h3>Melhoria de Imagem</h3>
-            <p class="price"><span class="price-prefix">A partir de</span><span class="price-value">R$ 15</span></p>
-            <ul class="check-list">
-              <li>1 imagem: R$ 15</li>
-              <li>5 imagens: R$ 70</li>
-              <li>10 imagens: R$ 100 <s class="price-old">R$ 120</s></li>
-              <li>Mais nitidez e resolução</li>
-              <li>Ideal para fotos de produtos e pratos</li>
-            </ul>
-            <a class="btn btn-ghost" href="#contato" data-pedido="imagem">Quero este pacote</a>
-          </article>
         </div>
 
         <p class="fine-print reveal">Os valores consideram textos, preços, fotos e informações fornecidos pelo cliente. Um carrossel de imagens conta como um post, também dentro dos pacotes. Os pacotes de redes sociais incluem a criação das artes, não a administração dos perfis. Domínio, hospedagem, manutenção, funcionalidades extras e alterações adicionais não estão incluídos nos valores de criação e são combinados antes da contratação.</p>
@@ -245,7 +259,7 @@
     <section class="section" id="portfolio">
       <div class="container">
         <div class="section-head reveal">
-          <p class="eyebrow">Portfólio</p>
+          <p class="eyebrow"><span class="eyebrow-num">04</span>Portfólio</p>
           <h2>Projetos que mostram o que <em>podemos criar.</em></h2>
         </div>
 
@@ -260,7 +274,7 @@
     <section class="section" id="antes-depois">
       <div class="container compare">
         <div class="compare-text reveal">
-          <p class="eyebrow">Antes e depois</p>
+          <p class="eyebrow"><span class="eyebrow-num">05</span>Antes e depois</p>
           <h2>Do material simples ao visual que <em>dá vontade de pedir.</em></h2>
           <p>Você envia o cardápio ou os posts que já usa e nós redesenhamos com fotos, cores e organização que valorizam seus produtos. Arraste a linha para comparar.</p>
           <p class="fine-print">Projetos conceituais, criados para demonstrar o serviço.</p>
@@ -288,7 +302,7 @@
     <section class="section section-tinted" id="como-funciona">
       <div class="container">
         <div class="section-head reveal">
-          <p class="eyebrow">Como funciona</p>
+          <p class="eyebrow"><span class="eyebrow-num">06</span>Como funciona</p>
           <h2>Do primeiro contato à <em>entrega.</em></h2>
         </div>
 
@@ -316,7 +330,7 @@
     <section class="section" id="contato">
       <div class="container">
         <div class="contact-panel reveal">
-          <p class="eyebrow">Contato</p>
+          <p class="eyebrow"><span class="eyebrow-num">07</span>Contato</p>
           <h2>Vamos dar mais presença à <em>sua marca?</em></h2>
           <p class="contact-text">Conte sua ideia e vamos encontrar a melhor solução para o seu negócio.</p>
           <a class="btn btn-primary btn-large" href="#contato" data-whatsapp="Olá! Vim pelo site da Blue Rose Studio e quero dar mais presença à minha marca.">
