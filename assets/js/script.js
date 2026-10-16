@@ -16,6 +16,7 @@
               "Abrir o site" ao abrir o projeto.
    ========================================================================== */
 const CATEGORIAS = [
+  'Melhoria de imagens',
   'Restaurantes e pizzarias',
   'Barbearias',
   'Pet shops',
@@ -25,6 +26,18 @@ const CATEGORIAS = [
 
 const PROJETOS = [
   {
+    titulo: 'Melhoria de imagens',
+    categoria: 'Melhoria de imagens',
+    descricao: 'Fotos escuras, borradas ou em baixa resolução ganham nitidez, luz e cor, prontas para posts, cardápios e sites. Na galeria, cada foto melhorada vem seguida da original.',
+    selo: 'Projeto conceitual',
+    unidade: 'imagens',
+    imagens: [
+      './assets/images/portfolio/melhoria-depois-sushi.jpg',
+      './assets/images/portfolio/melhoria-antes-sushi.jpg',
+      './assets/images/portfolio/melhoria-depois-carro.jpg',
+      './assets/images/portfolio/melhoria-antes-carro.jpg',
+    ],
+  },  {
     titulo: 'Posts para pizzaria',
     categoria: 'Restaurantes e pizzarias',
     descricao: 'Pacote de 9 artes para o feed de uma pizzaria, com promoções, oferta 2 por 1 e divulgação de delivery.',
@@ -147,6 +160,13 @@ const PROJETOS = [
    ========================================================================== */
 const COMPARACOES = [
   {
+    grupo: 'Melhoria de imagens',
+    formato: '1',
+    pares: [
+      { nome: 'Sushi', antes: 'melhoria-antes-sushi.jpg', depois: 'melhoria-depois-sushi.jpg' },
+      { nome: 'Carro', antes: 'melhoria-antes-carro.jpg', depois: 'melhoria-depois-carro.jpg' },
+    ],
+  },  {
     grupo: 'Cardápio digital',
     formato: '2 / 3',
     pares: [
