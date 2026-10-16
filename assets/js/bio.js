@@ -16,6 +16,7 @@ document.querySelectorAll('[data-whatsapp]').forEach((link) => {
 const enderecos = {
   instagram: `https://www.instagram.com/${CONFIG.instagram}/`,
   tiktok: `https://www.tiktok.com/@${CONFIG.tiktok}`,
+  youtube: `https://www.youtube.com/@${CONFIG.youtube}`,
 };
 
 document.querySelectorAll('[data-link]').forEach((link) => {
